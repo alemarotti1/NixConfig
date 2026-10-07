@@ -85,8 +85,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-      neovim
-      emacs
     #  thunderbird
     ];
   };
@@ -96,14 +94,21 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  
-  
+
+#  Nvidia drivers
+#  {
+#    hardware.graphics.enable = true;
+#    services.xserver.videoDrivers = [ "nvidia" ];
+#    hardware.nvidia.open = true;  # see the note above
+#  }
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
+   environment.systemPackages = with pkgs; [
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
+     neovim
+     wget
+     git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
